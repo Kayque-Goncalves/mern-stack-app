@@ -1,7 +1,7 @@
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
 
-import Form from './Form/Form';
-import Posts from './Posts/Posts';
+import Form from './components/Form/Form'
+import Posts from './components/Posts/Posts'
 import useStyles from './styles'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
                 </Container>
             </Grow>
         </Container>
-    );
+    )
 }
 
-export default App;
+export default App
