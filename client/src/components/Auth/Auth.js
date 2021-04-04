@@ -1,29 +1,46 @@
 import React, { useState } from 'react'
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
-import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined'
+import { useDispatch } from 'react-redux'
 import { GoogleLogin } from 'react-google-login'
 import { useHistory } from 'react-router-dom'
+
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
+import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined'
 
 import useStyles from './styles'
 import Icon from './Icon'
 import Input from './Input'
-import { useDispatch } from 'react-redux'
+import { signup, signin } from '../../actions/auth'
+
+const intialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Auth = () => {
 
     const classes = useStyles()
-    const [ showPassword, setShowPassword ] = useState(false)
-    const [ isSignup, setIsSignup ] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const handleSubmit = () => {}
+    const [ showPassword, setShowPassword ] = useState(false)
+    const [ isSignup, setIsSignup ] = useState(false)
+    const [ formData, setFormData ] = useState(intialState)
 
-    const handleChange = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if (isSignup) {
+            dispatch(signup(formData, history))
+        } else {
+            dispatch(signin(formData, history))
+        }
+    }
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+
+    }
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup)
-        handleShowPassword(false)
+        setShowPassword(false)
     }
 
     const googleSuccess = async (res) => {
