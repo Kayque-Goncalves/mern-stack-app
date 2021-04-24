@@ -2,7 +2,7 @@
   Blog App
 </h1>
 
-That is a Fullstack study blog app made with React. The application itself has nothing very special, it is more a project done during my studies trajactory. JWT was been used to authenticate the user, OAuth with the Google API to access the system with your Google account, Redux, Axios and some other things.
+This is a Fullstack study blog app made with React. The application itself has nothing very special, it is more a project done during my studies trajactory. JWT was been used to authenticate the user, OAuth with the Google API to access the system with your Google account, Redux, Axios and some other things.
 
 ## Building
 
